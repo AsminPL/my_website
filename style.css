@@ -1,0 +1,443 @@
+/* Import czcionek Google Fonts (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Podstawowe zmienne globalne z zielon¹ kolorystyk¹ */
+:root {
+    --primary-color: #4CAF50; /* G³ówny, ¿ywy zielony - akcenty, przyciski */
+    --secondary-color: #388E3C; /* Ciemniejszy zielony - hover, subtelne t³a */
+    --text-color-light: #e0e0e0; /* Jasny tekst na ciemnym tle */
+    --text-color-dark: #333333; /* Ciemny tekst na jasnym tle (dla przysz³ych zastosowañ) */
+    --background-dark: #212121; /* Bardzo ciemne t³o (prawie czarne) */
+    --background-accent-dark: #2c3a2e; /* Subtelny, ciemnozielony akcent t³a */
+    --card-background: #333333; /* T³o dla kart/bloków, nieco jaœniejsze od background-dark */
+    --border-color: #4a4a4a; /* Ciemne linie/bordery */
+    --send-package-btn-color: #FF5722; /* Kontrastowy pomarañczowy dla CTA (wa¿ny!) */
+    --send-package-btn-hover-color: #E64A19;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--background-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth; /* P³ynne przewijanie */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: var(--text-color-light);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Sekcja Nag³ówkowa (Hero Section) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Aby logo i licznik by³y pod sob¹ */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--background-accent-dark), var(--background-dark));
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite;
+    color: var(--text-color-light);
+    overflow: hidden;
+    padding: 20px; /* Dodatkowy padding na mniejszych ekranach */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-section .container {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-section .logo img {
+    max-width: 200px; /* Wiêksze logo */
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.5)); /* Zielony cieñ dla logo */
+}
+
+.hero-section .logo h1 {
+    font-size: 4em; /* Du¿y nag³ówek */
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    color: var(--primary-color); /* Nazwa kana³u w zieleni */
+}
+
+.subscriber-counter {
+    margin-top: 40px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.subscriber-counter span {
+    display: block;
+    font-size: 4.5em; /* Bardzo du¿a liczba subskrybentów */
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    letter-spacing: 2px; /* Lepsza czytelnoœæ */
+}
+
+.subscriber-counter p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* Ogólne style sekcji */
+.section {
+    padding: 100px 0; /* Wiêkszy padding dla sekcji */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 60px;
+    position: relative;
+    color: var(--primary-color); /* Nag³ówki sekcji w zieleni */
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 80px; /* D³u¿sza linia pod nag³ówkiem */
+    height: 4px; /* Grubsza linia */
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Sekcja O Mnie */
+.about-section {
+    background-color: var(--background-accent-dark); /* Lekko zielonkawe t³o */
+}
+
+.about-section .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px; /* Wiêkszy odstêp */
+}
+
+.about-section .about-image {
+    flex: 1;
+    min-width: 320px;
+    text-align: center;
+}
+
+.about-section .about-image img {
+    max-width: 100%;
+    border-radius: 15px; /* Bardziej zaokr¹glone rogi */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Mocniejszy cieñ */
+    transition: transform 0.3s ease;
+}
+.about-section .about-image img:hover {
+    transform: translateY(-5px); /* Subtelny efekt uniesienia */
+}
+
+.about-section .about-text {
+    flex: 2;
+    min-width: 320px;
+    font-size: 1.15em;
+    color: var(--text-color-light);
+}
+.about-section .about-text p {
+    margin-bottom: 15px;
+}
+.about-section .about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Sekcja Projekty */
+.projects-section {
+    background-color: var(--background-dark); /* G³ówne ciemne t³o */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Wiêkszy odstêp miêdzy projektami */
+}
+
+.project-item {
+    background-color: var(--card-background); /* T³o karty projektu */
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.2); /* Delikatna zielona ramka */
+}
+
+.project-item:hover {
+    transform: translateY(-8px); /* Wiêksze uniesienie przy najechaniu */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.project-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.project-item p {
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: var(--text-color-light);
+}
+
+.btn-project {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 12px 25px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.btn-project:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Sekcja Wysy³ka Paczki */
+.send-package-section {
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Zielony gradient dla CTA */
+    padding: 120px 0; /* Du¿y padding */
+    color: var(--text-color-light);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3); /* Wewnêtrzny cieñ */
+}
+
+.send-package-section h2 {
+    font-size: 3.5em; /* Du¿y, wyrazisty nag³ówek */
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    color: var(--text-color-light); /* Bia³y tekst na zielonym tle */
+}
+.send-package-section h2::after {
+    background-color: var(--text-color-light); /* Bia³a linia pod nag³ówkiem CTA */
+}
+
+.send-package-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.btn-send-package {
+    display: inline-block;
+    background-color: var(--send-package-btn-color); /* Mocny kontrastowy kolor! */
+    color: #fff;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-size: 1.8em; /* Wiêksza czcionka dla CTA */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-send-package:hover {
+    background-color: var(--send-package-btn-hover-color);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+/* Sekcja Kontakt */
+.contact-section {
+    background-color: var(--background-dark);
+}
+
+.contact-section .contact-info {
+    text-align: center;
+    font-size: 1.15em;
+    color: var(--text-color-light);
+}
+
+.contact-section .contact-info p {
+    margin-bottom: 25px;
+}
+
+.contact-section .social-links {
+    margin-top: 40px;
+}
+
+.contact-section .social-links a {
+    display: inline-block;
+    margin: 0 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.contact-section .social-links img {
+    width: 60px; /* Wiêksze ikony social media */
+    height: 60px;
+    /* Filtr dla bia³ych/czarnych ikon na ciemnym tle, mo¿e nadaæ zielony odcieñ */
+    filter: invert(100%) saturate(0%) brightness(1) drop-shadow(0 0 5px rgba(76, 175, 80, 0.4));
+}
+
+.contact-section .social-links a:hover {
+    transform: translateY(-8px) scale(1.1);
+    filter: invert(0) saturate(100%) hue-rotate(90deg) brightness(1.2) drop-shadow(0 0 10px var(--primary-color)); /* Akcent zieleni przy hover */
+}
+
+/* Stopka */
+.footer {
+    background-color: #1a1a1a; /* Bardzo ciemna stopka */
+    color: var(--text-color-light);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    line-height: 1.8;
+}
+
+/* Responsywnoœæ */
+@media (max-width: 992px) {
+    .hero-section .logo h1 {
+        font-size: 3.2em;
+    }
+    .subscriber-counter span {
+        font-size: 3.5em;
+    }
+    .section h2 {
+        font-size: 2.5em;
+    }
+    .about-section .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-section .about-image,
+    .about-section .about-text {
+        min-width: unset;
+        width: 100%;
+    }
+    .send-package-section h2 {
+        font-size: 2.8em;
+    }
+    .btn-send-package {
+        font-size: 1.5em;
+        padding: 16px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section .logo h1 {
+        font-size: 2.5em;
+    }
+    .hero-section .logo img {
+        max-width: 150px;
+    }
+    .subscriber-counter {
+        margin-top: 25px;
+    }
+    .subscriber-counter span {
+        font-size: 2.8em;
+    }
+    .section {
+        padding: 70px 0;
+    }
+    .section h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-item {
+        padding: 25px;
+    }
+    .send-package-section {
+        padding: 80px 0;
+    }
+    .send-package-section h2 {
+        font-size: 2.2em;
+    }
+    .btn-send-package {
+        font-size: 1.2em;
+        padding: 14px 30px;
+    }
+    .contact-section .social-links a {
+        margin: 0 10px;
+    }
+    .contact-section .social-links img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section .logo h1 {
+        font-size: 2em;
+    }
+    .subscriber-counter span {
+        font-size: 2.2em;
+    }
+    .section {
+        padding: 50px 0;
+    }
+    .section h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .about-section .about-text {
+        font-size: 1em;
+    }
+    .send-package-section h2 {
+        font-size: 1.8em;
+    }
+    .btn-send-package {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .contact-section .social-links img {
+        width: 35px;
+        height: 35px;
+    }
+}
