@@ -1,4 +1,7 @@
 # Strona Internetowa asmin.pl
+## WAŻNA INFORMACJA!!! 
+**Te repozytorium od dnia 14.11.2025 jest traktowane jako End-Of-Life (EOL) - więcej aktualizacji prawdopodobnie się nie pojawi.**
+
 
 ## Opis
 
