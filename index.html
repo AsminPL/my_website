@@ -6,7 +6,7 @@
     <title>asmin.pl</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-// css
+    <!-- css -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
 
@@ -101,13 +101,12 @@
 
     <canvas id="bg-canvas"></canvas>
 
-// Takjakby taskbar - nie wiem
     <header class="fixed top-0 left-0 right-0 z-50 bg-gray-950/50 backdrop-blur-xl border-b border-white/5">
         <nav class="container mx-auto flex justify-between items-center py-5 px-6">
             <a href="#home" class="text-2xl font-bold tracking-tighter font-heading">
                 ASMIN<span class="text-green-500">.PL</span>
             </a>
-            
+          <!-- paseczek z opcjami taki fajny -->
             <div class="hidden md:flex space-x-10 text-sm font-medium tracking-wide">
                 <a href="#about" class="nav-link hover:text-green-400 uppercase">Kim jestem</a>
                 <a href="#developer" class="nav-link hover:text-green-400 uppercase">Tech Stack</a>
@@ -120,8 +119,7 @@
             </button>
         </nav>
     </header>
-
-// Zamawiam tryb mobilny z serem oraz duzym napojem 
+    <!-- paseczek z opcjami ale taki na telefony -->
     <div id="mobile-menu" class="fixed inset-0 bg-gray-950/95 z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-heading hidden">
         <button id="mobile-close" class="absolute top-6 right-6 text-3xl">&times;</button>
         <a href="#about" class="m-link text-white">Kim jestem</a>
@@ -131,7 +129,6 @@
     </div>
 
     <main>
-// Main to co user zobaczy jak tylko wejdzie (suby sa w skrypcie)
         <section id="home" class="relative min-h-screen flex items-center pt-32 pb-20">
             <div class="container mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
                 
@@ -165,8 +162,7 @@
 
             </div>
         </section>
-
-        <!-- Sekcja O Mnie -->
+        <!-- o mnie i inne duperele -->
         <section id="about" class="py-32 relative">
             <div class="container mx-auto px-6">
                 <div class="glass-card rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden fade-in">
@@ -185,8 +181,7 @@
                 </div>
             </div>
         </section>
-
-// no technologia i pomidor tak btw.
+    <!-- developer studio -->
         <section id="developer" class="py-32 bg-white/5">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl md:text-6xl font-bold mb-6 font-heading text-white fade-in">Asmin Developer Studios</h2>
@@ -221,8 +216,7 @@
                 </div>
             </div>
         </section>
-
-// pprojekty
+    <!-- projekty -->
         <section id="projects" class="py-32">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl md:text-6xl font-bold mb-16 font-heading text-white fade-in">Moje Projekty</h2>
@@ -243,8 +237,7 @@
                 </div>
             </div>
         </section>
-
-// kontakt
+    <!-- kontakt -->
         <section id="contact" class="py-32">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row gap-12 items-start">
@@ -311,7 +304,7 @@
             </div>
         </section>
     </main>
-
+    <!-- dol strony -->
     <footer class="py-12 border-t border-white/5">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm text-center md:text-left">
             <p>© 2024-2026 Asmin Developer Studios</p>
@@ -325,7 +318,6 @@
             </div>
         </div>
     </footer>
-
 <script>
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
@@ -409,6 +401,7 @@
         function startCounters() {
             counters.forEach(counter => {
                 const el = document.getElementById(counter.id);
+                if (!el) return;
                 let current = 0;
 
                 function update() {
@@ -430,9 +423,9 @@
             }
         }, { threshold: 0.5 });
 
-        counterObserver.observe(document.getElementById('yt-count'));
+        const ytCounter = document.getElementById('yt-count');
+        if (ytCounter) counterObserver.observe(ytCounter);
 
-        // Reveal
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -449,9 +442,10 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileClose = document.getElementById('mobile-close');
 
-        mobileToggle.onclick = () => mobileMenu.classList.remove('hidden');
-/
-        mobileClose.onclick = () => mobileMenu.classList.add('hidden');
+        if(mobileToggle && mobileMenu && mobileClose) {
+            mobileToggle.onclick = () => mobileMenu.classList.remove('hidden');
+            mobileClose.onclick = () => mobileMenu.classList.add('hidden');
+        }
 
         document.querySelectorAll('.m-link')
             .forEach(link => link.onclick = () => mobileMenu.classList.add('hidden'));
